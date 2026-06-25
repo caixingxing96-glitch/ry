@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id="tags-view-container" class="tags-view-container" :class="{ 'tags-view-container--chrome': tagsViewStyle === 'chrome' }" :style="chromeVars">
     <!-- 左切换箭头 -->
     <span class="tags-nav-btn tags-nav-btn--left" :class="{ disabled: !canScrollLeft }" @click="scrollLeft">
@@ -7,10 +8,15 @@
 
     <!-- 标签滚动区 -->
     <scroll-pane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll" @updateArrows="updateArrowState">
+=======
+  <div id="tags-view-container" class="tags-view-container">
+    <scroll-pane ref="scrollPane" class="tags-view-wrapper">
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
       <router-link
         v-for="tag in visitedViews"
         ref="tag"
         :key="tag.path"
+<<<<<<< HEAD
         :class="{ 'active': isActive(tag), 'has-icon': tagsIcon }"
         :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
         tag="span"
@@ -61,6 +67,24 @@
       <li v-if="!isFirstView()" @click="closeLeftTags"><i class="el-icon-back"></i> 关闭左侧</li>
       <li v-if="!isLastView()" @click="closeRightTags"><i class="el-icon-right"></i> 关闭右侧</li>
       <li @click="closeAllTags(selectedTag)"><i class="el-icon-circle-close"></i> 全部关闭</li>
+=======
+        :class="isActive(tag)?'active':''"
+        :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
+        tag="span"
+        class="tags-view-item"
+        @click.middle.native="closeSelectedTag(tag)"
+        @contextmenu.prevent.native="openMenu(tag,$event)"
+      >
+        {{ tag.title }}
+        <span v-if="!tag.meta.affix" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
+      </router-link>
+    </scroll-pane>
+    <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
+      <li @click="refreshSelectedTag(selectedTag)">刷新页面</li>
+      <li v-if="!(selectedTag.meta&&selectedTag.meta.affix)" @click="closeSelectedTag(selectedTag)">关闭当前</li>
+      <li @click="closeOthersTags">关闭其他</li>
+      <li @click="closeAllTags(selectedTag)">关闭所有</li>
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     </ul>
   </div>
 </template>
@@ -77,11 +101,15 @@ export default {
       top: 0,
       left: 0,
       selectedTag: {},
+<<<<<<< HEAD
       affixTags: [],
       canScrollLeft: false,
       canScrollRight: false,
       isFullscreen: false,
       hiddenElements: []
+=======
+      affixTags: []
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     }
   },
   computed: {
@@ -90,6 +118,7 @@ export default {
     },
     routes() {
       return this.$store.state.permission.routes
+<<<<<<< HEAD
     },
     theme() {
       return this.$store.state.settings.theme
@@ -111,6 +140,8 @@ export default {
         '--chrome-tab-text-active': primary,
         '--chrome-wing-r': '10px'
       }
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     }
   },
   watch: {
@@ -124,16 +155,20 @@ export default {
       } else {
         document.body.removeEventListener('click', this.closeMenu)
       }
+<<<<<<< HEAD
     },
     visitedViews() {
       this.$nextTick(() => {
         this.updateArrowState()
       })
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     }
   },
   mounted() {
     this.initTags()
     this.addTags()
+<<<<<<< HEAD
     window.addEventListener('resize', this.updateArrowState)
     window.addEventListener('keydown', this.handleKeyDown)
   },
@@ -187,6 +222,13 @@ export default {
         return false
       }
     },
+=======
+  },
+  methods: {
+    isActive(route) {
+      return route.path === this.$route.path
+    },
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     filterAffixTags(routes, basePath = '/') {
       let tags = []
       routes.forEach(route => {
@@ -209,6 +251,7 @@ export default {
       return tags
     },
     initTags() {
+<<<<<<< HEAD
       if (this.$store.state.settings.tagsViewPersist) {
         this.$store.dispatch('tagsView/loadPersistedViews')
       }
@@ -216,6 +259,13 @@ export default {
       for (const tag of affixTags) {
         if (tag.name) {
           this.$store.dispatch('tagsView/addAffixView', tag)
+=======
+      const affixTags = this.affixTags = this.filterAffixTags(this.routes)
+      for (const tag of affixTags) {
+        // Must have tag name
+        if (tag.name) {
+          this.$store.dispatch('tagsView/addVisitedView', tag)
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
         }
       }
     },
@@ -224,6 +274,10 @@ export default {
       if (name) {
         this.$store.dispatch('tagsView/addView', this.$route)
       }
+<<<<<<< HEAD
+=======
+      return false
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     },
     moveToCurrentTag() {
       const tags = this.$refs.tag
@@ -231,6 +285,10 @@ export default {
         for (const tag of tags) {
           if (tag.to.path === this.$route.path) {
             this.$refs.scrollPane.moveToTarget(tag)
+<<<<<<< HEAD
+=======
+            // when query is different then update
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
             if (tag.to.fullPath !== this.$route.fullPath) {
               this.$store.dispatch('tagsView/updateVisitedView', this.$route)
             }
@@ -239,6 +297,7 @@ export default {
         }
       })
     },
+<<<<<<< HEAD
     scrollLeft() {
       if (!this.canScrollLeft) return
       this.$refs.scrollPane.scrollToStart()
@@ -326,11 +385,26 @@ export default {
     },
     closeSelectedTag(view) {
       this.$tab.closePage(view).then(({ visitedViews }) => {
+=======
+    refreshSelectedTag(view) {
+      this.$store.dispatch('tagsView/delCachedView', view).then(() => {
+        const { fullPath } = view
+        this.$nextTick(() => {
+          this.$router.replace({
+            path: '/redirect' + fullPath
+          })
+        })
+      })
+    },
+    closeSelectedTag(view) {
+      this.$store.dispatch('tagsView/delView', view).then(({ visitedViews }) => {
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
         if (this.isActive(view)) {
           this.toLastView(visitedViews, view)
         }
       })
     },
+<<<<<<< HEAD
     closeRightTags() {
       this.$tab.closeRightPage(this.selectedTag).then(visitedViews => {
         if (!visitedViews.find(i => i.fullPath === this.$route.fullPath)) {
@@ -348,12 +422,22 @@ export default {
     closeOthersTags() {
       this.$router.push(this.selectedTag.fullPath).catch(() => {})
       this.$tab.closeOtherPage(this.selectedTag).then(() => {
+=======
+    closeOthersTags() {
+      this.$router.push(this.selectedTag)
+      this.$store.dispatch('tagsView/delOthersViews', this.selectedTag).then(() => {
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
         this.moveToCurrentTag()
       })
     },
     closeAllTags(view) {
+<<<<<<< HEAD
       this.$tab.closeAllPage().then(({ visitedViews }) => {
         if (this.affixTags.some(tag => tag.path === this.$route.path)) {
+=======
+      this.$store.dispatch('tagsView/delAllViews').then(({ visitedViews }) => {
+        if (this.affixTags.some(tag => tag.path === view.path)) {
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
           return
         }
         this.toLastView(visitedViews, view)
@@ -362,9 +446,18 @@ export default {
     toLastView(visitedViews, view) {
       const latestView = visitedViews.slice(-1)[0]
       if (latestView) {
+<<<<<<< HEAD
         this.$router.push(latestView.fullPath)
       } else {
         if (view && view.name === 'Dashboard') {
+=======
+        this.$router.push(latestView)
+      } else {
+        // now the default is to redirect to the home page if there is no tags-view,
+        // you can adjust it according to your needs.
+        if (view.name === 'Dashboard') {
+          // to reload home page
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
           this.$router.replace({ path: '/redirect' + view.fullPath })
         } else {
           this.$router.push('/')
@@ -372,23 +465,42 @@ export default {
       }
     },
     openMenu(tag, e) {
+<<<<<<< HEAD
       this.left = e.clientX
+=======
+      const menuMinWidth = 105
+      const offsetLeft = this.$el.getBoundingClientRect().left // container margin left
+      const offsetWidth = this.$el.offsetWidth // container width
+      const maxLeft = offsetWidth - menuMinWidth // left boundary
+      const left = e.clientX - offsetLeft + 15 // 15: margin right
+
+      if (left > maxLeft) {
+        this.left = maxLeft
+      } else {
+        this.left = left
+      }
+
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
       this.top = e.clientY
       this.visible = true
       this.selectedTag = tag
     },
     closeMenu() {
       this.visible = false
+<<<<<<< HEAD
     },
     handleScroll() {
       this.closeMenu()
       this.updateArrowState()
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+<<<<<<< HEAD
 $tags-bar-height: 34px;
 
 .tags-view-container {
@@ -439,6 +551,15 @@ $tags-bar-height: 34px;
     min-width: 0;
     height: 100%;
 
+=======
+.tags-view-container {
+  height: 34px;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #d8dce5;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
+  .tags-view-wrapper {
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     .tags-view-item {
       display: inline-block;
       position: relative;
@@ -451,6 +572,7 @@ $tags-bar-height: 34px;
       padding: 0 8px;
       font-size: 12px;
       margin-left: 5px;
+<<<<<<< HEAD
       border-radius: 3px;
 
       &:first-of-type { margin-left: 6px; }
@@ -506,11 +628,41 @@ $tags-bar-height: 34px;
     width: 60px;
   }
 
+=======
+      margin-top: 4px;
+      &:first-of-type {
+        margin-left: 15px;
+      }
+      &:last-of-type {
+        margin-right: 15px;
+      }
+      &.active {
+        background-color: #42b983;
+        color: #fff;
+        border-color: #42b983;
+        &::before {
+          content: '';
+          background: #fff;
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          position: relative;
+          margin-right: 2px;
+        }
+      }
+    }
+  }
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   .contextmenu {
     margin: 0;
     background: #fff;
     z-index: 3000;
+<<<<<<< HEAD
     position: fixed;
+=======
+    position: absolute;
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     list-style-type: none;
     padding: 5px 0;
     border-radius: 4px;
@@ -518,7 +670,10 @@ $tags-bar-height: 34px;
     font-weight: 400;
     color: #333;
     box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, .3);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     li {
       margin: 0;
       padding: 7px 16px;
@@ -528,6 +683,7 @@ $tags-bar-height: 34px;
       }
     }
   }
+<<<<<<< HEAD
   &.tags-view-container--chrome {
     --chrome-strip-bg: #ffffff;
     --chrome-strip-border: #e4e7ed;
@@ -643,10 +799,13 @@ $tags-bar-height: 34px;
       }
     }
   }
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 }
 </style>
 
 <style lang="scss">
+<<<<<<< HEAD
 .tags-view-wrapper {
   .el-scrollbar {
     height: 100%;
@@ -720,6 +879,10 @@ $tags-bar-height: 34px;
     }
   }
 
+=======
+//reset element css of el-icon-close
+.tags-view-wrapper {
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   .tags-view-item {
     .el-icon-close {
       width: 16px;
@@ -741,6 +904,7 @@ $tags-bar-height: 34px;
     }
   }
 }
+<<<<<<< HEAD
 
 /* 页签全屏模式样式 */
 .main-container.fullscreen-mode {
@@ -782,3 +946,6 @@ $tags-bar-height: 34px;
   overflow: auto;
 }
 </style>
+=======
+</style>
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)

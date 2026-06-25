@@ -1,14 +1,26 @@
+<<<<<<< HEAD
 /**
  * v-hasRole 角色权限处理
  * Copyright (c) 2019 ruoyi
  */
 
+=======
+ /**
+ * 角色权限处理
+ * Copyright (c) 2019 ruoyi
+ */
+ 
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 import store from '@/store'
 
 export default {
   inserted(el, binding, vnode) {
     const { value } = binding
+<<<<<<< HEAD
     const super_admin = "admin"
+=======
+    const super_admin = "admin";
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     const roles = store.getters && store.getters.roles
 
     if (value && value instanceof Array && value.length > 0) {

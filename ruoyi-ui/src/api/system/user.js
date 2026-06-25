@@ -1,5 +1,8 @@
 import request from '@/utils/request'
+<<<<<<< HEAD
 import { parseStrEmpty } from "@/utils/ruoyi"
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 
 // 查询用户列表
 export function listUser(query) {
@@ -13,7 +16,11 @@ export function listUser(query) {
 // 查询用户详细
 export function getUser(userId) {
   return request({
+<<<<<<< HEAD
     url: '/system/user/' + parseStrEmpty(userId),
+=======
+    url: '/system/user/' + userId,
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     method: 'get'
   })
 }
@@ -96,7 +103,11 @@ export function updateUserPwd(oldPassword, newPassword) {
   return request({
     url: '/system/user/profile/updatePwd',
     method: 'put',
+<<<<<<< HEAD
     data: data
+=======
+    params: data
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   })
 }
 
@@ -105,6 +116,7 @@ export function uploadAvatar(data) {
   return request({
     url: '/system/user/profile/avatar',
     method: 'post',
+<<<<<<< HEAD
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     data: data
   })
@@ -134,3 +146,8 @@ export function deptTreeSelect() {
     method: 'get'
   })
 }
+=======
+    data: data
+  })
+}
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)

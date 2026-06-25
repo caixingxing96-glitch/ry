@@ -1,4 +1,5 @@
 /**
+<<<<<<< HEAD
  * 路径匹配器
  * @param {string} pattern
  * @param {string} path
@@ -38,6 +39,8 @@ export function isHttp(url) {
 
 /**
  * 判断path是否为外链
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
  * @param {string} path
  * @returns {Boolean}
  */
@@ -104,7 +107,14 @@ export function validEmail(email) {
  * @returns {Boolean}
  */
 export function isString(str) {
+<<<<<<< HEAD
   return typeof str === 'string' || str instanceof String
+=======
+  if (typeof str === 'string' || str instanceof String) {
+    return true
+  }
+  return false
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 }
 
 /**

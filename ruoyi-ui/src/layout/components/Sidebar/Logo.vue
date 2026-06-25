@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="sidebar-logo-container" :class="{'collapse':collapse}" :style="{ backgroundColor: sideTheme === 'theme-dark' && navType !== 3 ? variables.menuBackground : variables.menuLightBackground }">
     <transition name="sidebarLogoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
@@ -8,6 +9,17 @@
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo" />
         <h1 class="sidebar-title" :style="{ color: sideTheme === 'theme-dark' && navType !== 3 ? variables.logoTitleColor : variables.logoLightTitleColor }">{{ title }} </h1>
+=======
+  <div class="sidebar-logo-container" :class="{'collapse':collapse}">
+    <transition name="sidebarLogoFade">
+      <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
+        <img v-if="logo" :src="logo" class="sidebar-logo">
+        <h1 v-else class="sidebar-title">{{ title }} </h1>
+      </router-link>
+      <router-link v-else key="expand" class="sidebar-logo-link" to="/">
+        <img v-if="logo" :src="logo" class="sidebar-logo">
+        <h1 class="sidebar-title">{{ title }} </h1>
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
       </router-link>
     </transition>
   </div>
@@ -15,7 +27,10 @@
 
 <script>
 import logoImg from '@/assets/logo/logo.png'
+<<<<<<< HEAD
 import variables from '@/assets/styles/variables.scss'
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 
 export default {
   name: 'SidebarLogo',
@@ -25,6 +40,7 @@ export default {
       required: true
     }
   },
+<<<<<<< HEAD
   computed: {
     variables() {
       return variables
@@ -39,6 +55,11 @@ export default {
   data() {
     return {
       title: process.env.VUE_APP_TITLE,
+=======
+  data() {
+    return {
+      title: '若依管理系统',
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
       logo: logoImg
     }
   }
@@ -57,6 +78,10 @@ export default {
 
 .sidebar-logo-container {
   position: relative;
+<<<<<<< HEAD
+=======
+  width: 100%;
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   height: 50px;
   line-height: 50px;
   background: #2b2f3a;

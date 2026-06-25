@@ -5,6 +5,10 @@
         <slot />
       </div>
     </div>
+<<<<<<< HEAD
+=======
+    <!-- eslint-disable-next-line -->
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     <div :style="{backgroundImage: `url(${image})`}" class="pan-thumb"></div>
   </div>
 </template>

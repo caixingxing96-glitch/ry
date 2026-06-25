@@ -41,4 +41,8 @@ export function delPost(postId) {
     url: '/system/post/' + postId,
     method: 'delete'
   })
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <el-form ref="form" :model="form" :rules="rules" label-width="80px">
     <el-form-item label="用户昵称" prop="nickName">
       <el-input v-model="form.nickName" maxlength="30" />
@@ -11,6 +12,20 @@
     </el-form-item>
     <el-form-item label="性别">
       <el-radio-group v-model="form.sex">
+=======
+  <el-form ref="form" :model="user" :rules="rules" label-width="80px">
+    <el-form-item label="用户昵称" prop="nickName">
+      <el-input v-model="user.nickName" />
+    </el-form-item> 
+    <el-form-item label="手机号码" prop="phonenumber">
+      <el-input v-model="user.phonenumber" maxlength="11" />
+    </el-form-item>
+    <el-form-item label="邮箱" prop="email">
+      <el-input v-model="user.email" maxlength="50" />
+    </el-form-item>
+    <el-form-item label="性别">
+      <el-radio-group v-model="user.sex">
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
         <el-radio label="0">男</el-radio>
         <el-radio label="1">女</el-radio>
       </el-radio-group>
@@ -23,7 +38,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { updateUserProfile } from "@/api/system/user"
+=======
+import { updateUserProfile } from "@/api/system/user";
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 
 export default {
   props: {
@@ -33,7 +52,10 @@ export default {
   },
   data() {
     return {
+<<<<<<< HEAD
       form: {},
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
       // 表单校验
       rules: {
         nickName: [
@@ -43,7 +65,11 @@ export default {
           { required: true, message: "邮箱地址不能为空", trigger: "blur" },
           {
             type: "email",
+<<<<<<< HEAD
             message: "请输入正确的邮箱地址",
+=======
+            message: "'请输入正确的邮箱地址",
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
             trigger: ["blur", "change"]
           }
         ],
@@ -56,6 +82,7 @@ export default {
           }
         ]
       }
+<<<<<<< HEAD
     }
   },
   watch: {
@@ -67,11 +94,15 @@ export default {
       },
       immediate: true
     }
+=======
+    };
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   },
   methods: {
     submit() {
       this.$refs["form"].validate(valid => {
         if (valid) {
+<<<<<<< HEAD
           updateUserProfile(this.form).then(() => {
             this.$modal.msgSuccess("修改成功")
             this.user.phonenumber = this.form.phonenumber
@@ -85,4 +116,22 @@ export default {
     }
   }
 }
+=======
+          updateUserProfile(this.user).then(response => {
+            if (response.code === 200) {
+              this.msgSuccess("修改成功");
+            } else {
+              this.msgError(response.msg);
+            }
+          });
+        }
+      });
+    },
+    close() {
+      this.$store.dispatch("tagsView/delView", this.$route);
+      this.$router.push({ path: "/index" });
+    }
+  }
+};
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 </script>

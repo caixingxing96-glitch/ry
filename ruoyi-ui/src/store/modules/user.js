@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import store from '@/store'
 import router from '@/router'
 import cache from '@/plugins/cache'
@@ -6,13 +7,21 @@ import { login, logout, getInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { isHttp, isEmpty } from "@/utils/validate"
 import defAva from '@/assets/images/profile.jpg'
+=======
+import { login, logout, getInfo } from '@/api/login'
+import { getToken, setToken, removeToken } from '@/utils/auth'
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 
 const user = {
   state: {
     token: getToken(),
+<<<<<<< HEAD
     id: '',
     name: '',
     nickName: '',
+=======
+    name: '',
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     avatar: '',
     roles: [],
     permissions: []
@@ -22,6 +31,7 @@ const user = {
     SET_TOKEN: (state, token) => {
       state.token = token
     },
+<<<<<<< HEAD
     SET_ID: (state, id) => {
       state.id = id
     },
@@ -31,6 +41,11 @@ const user = {
     SET_NICK_NAME: (state, nickName) => {
       state.nickName = nickName
     },
+=======
+    SET_NAME: (state, name) => {
+      state.name = name
+    },
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     SET_AVATAR: (state, avatar) => {
       state.avatar = avatar
     },
@@ -53,7 +68,10 @@ const user = {
         login(username, password, code, uuid).then(res => {
           setToken(res.token)
           commit('SET_TOKEN', res.token)
+<<<<<<< HEAD
           store.dispatch('lock/unlockScreen')
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
           resolve()
         }).catch(error => {
           reject(error)
@@ -64,18 +82,25 @@ const user = {
     // 获取用户信息
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
+<<<<<<< HEAD
         getInfo().then(res => {
           const user = res.user
           let avatar = user.avatar || ""
           if (!isHttp(avatar)) {
             avatar = (isEmpty(avatar)) ? defAva : process.env.VUE_APP_BASE_API + avatar
           }
+=======
+        getInfo(state.token).then(res => {
+          const user = res.user
+          const avatar = user.avatar == "" ? require("@/assets/image/profile.jpg") : process.env.VUE_APP_BASE_API + user.avatar;
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
           if (res.roles && res.roles.length > 0) { // 验证返回的roles是否是一个非空数组
             commit('SET_ROLES', res.roles)
             commit('SET_PERMISSIONS', res.permissions)
           } else {
             commit('SET_ROLES', ['ROLE_DEFAULT'])
           }
+<<<<<<< HEAD
           commit('SET_ID', user.userId)
           commit('SET_NAME', user.userName)
           commit('SET_NICK_NAME', user.nickName)
@@ -93,13 +118,21 @@ const user = {
               router.push({ name: 'Profile', params: { activeTab: 'resetPwd' } })
             }).catch(() => {})
           }
+=======
+          commit('SET_NAME', user.username)
+          commit('SET_AVATAR', avatar)
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
           resolve(res)
         }).catch(error => {
           reject(error)
         })
       })
     },
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     // 退出系统
     LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {

@@ -51,6 +51,7 @@ export function updateMenu(data) {
   })
 }
 
+<<<<<<< HEAD
 // 保存菜单排序
 export function updateMenuSort(data) {
   return request({
@@ -60,6 +61,8 @@ export function updateMenuSort(data) {
   })
 }
 
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 // 删除菜单
 export function delMenu(menuId) {
   return request({

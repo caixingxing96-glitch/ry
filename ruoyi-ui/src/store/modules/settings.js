@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import defaultSettings from '@/settings'
 import { useDynamicTitle } from '@/utils/dynamicTitle'
 
@@ -20,18 +21,37 @@ const state = {
   footerVisible: storageSetting.footerVisible === undefined ? footerVisible : storageSetting.footerVisible,
   footerContent: footerContent
 }
+=======
+import variables from '@/assets/styles/element-variables.scss'
+import defaultSettings from '@/settings'
+
+const { showSettings, tagsView, fixedHeader, sidebarLogo } = defaultSettings
+
+const state = {
+  theme: variables.theme,
+  showSettings: showSettings,
+  tagsView: tagsView,
+  fixedHeader: fixedHeader,
+  sidebarLogo: sidebarLogo
+}
+
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 const mutations = {
   CHANGE_SETTING: (state, { key, value }) => {
     if (state.hasOwnProperty(key)) {
       state[key] = value
     }
+<<<<<<< HEAD
   },
   SET_TITLE: (state, title) => {
     state.title = title
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   }
 }
 
 const actions = {
+<<<<<<< HEAD
   // 修改布局设置
   changeSetting({ commit }, data) {
     commit('CHANGE_SETTING', data)
@@ -40,6 +60,10 @@ const actions = {
   setTitle({ commit }, title) {
     commit('SET_TITLE', title)
     useDynamicTitle()
+=======
+  changeSetting({ commit }, data) {
+    commit('CHANGE_SETTING', data)
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   }
 }
 

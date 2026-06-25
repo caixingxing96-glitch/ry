@@ -2,6 +2,11 @@ import Vue from 'vue'
 
 import Cookies from 'js-cookie'
 
+<<<<<<< HEAD
+=======
+import 'normalize.css/normalize.css' // a modern alternative to CSS resets
+
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 import Element from 'element-ui'
 import './assets/styles/element-variables.scss'
 
@@ -10,6 +15,7 @@ import '@/assets/styles/ruoyi.scss' // ruoyi css
 import App from './App'
 import store from './store'
 import router from './router'
+<<<<<<< HEAD
 import directive from './directive' // directive
 import plugins from './plugins' // plugins
 import { download } from '@/utils/request'
@@ -35,10 +41,21 @@ import ImagePreview from "@/components/ImagePreview"
 import DictTag from '@/components/DictTag'
 // 字典数据组件
 import DictData from '@/components/DictData'
+=======
+import permission from './directive/permission'
+
+import './assets/icons' // icon
+import './permission' // permission control
+import { getDicts } from "@/api/system/dict/data";
+import { getConfigKey } from "@/api/system/config";
+import { dateFormat, resetForm, addDateRange, selectDictLabel } from "@/utils/ruoyi";
+import Pagination from "@/components/Pagination";
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
 Vue.prototype.getConfigKey = getConfigKey
+<<<<<<< HEAD
 Vue.prototype.parseTime = parseTime
 Vue.prototype.resetForm = resetForm
 Vue.prototype.addDateRange = addDateRange
@@ -59,6 +76,29 @@ Vue.component('ImagePreview', ImagePreview)
 Vue.use(directive)
 Vue.use(plugins)
 DictData.install()
+=======
+Vue.prototype.dateFormat = dateFormat
+Vue.prototype.resetForm = resetForm
+Vue.prototype.addDateRange = addDateRange
+Vue.prototype.selectDictLabel = selectDictLabel
+
+Vue.prototype.msgSuccess = function (msg) {
+  this.$message({ showClose: true, message: msg, type: "success" });
+}
+
+Vue.prototype.msgError = function (msg) {
+  this.$message({ showClose: true, message: msg, type: "error" });
+}
+
+Vue.prototype.msgInfo = function (msg) {
+  this.$message.info(msg);
+}
+
+// 全局组件挂载
+Vue.component('Pagination', Pagination)
+
+Vue.use(permission)
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 
 /**
  * If you don't want to use mock-server

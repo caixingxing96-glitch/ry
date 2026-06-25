@@ -1,4 +1,5 @@
 module.exports = {
+<<<<<<< HEAD
   /**
    * 网页标题
    */
@@ -18,6 +19,14 @@ module.exports = {
    * 菜单导航模式 1、纯左侧 2、混合（左侧+顶部） 3、纯顶部
    */
   navType: 1,
+=======
+  title: '若依管理系统',
+
+  /**
+   * 是否系统布局配置
+   */
+  showSettings: false,
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 
   /**
    * 是否显示 tagsView
@@ -25,6 +34,7 @@ module.exports = {
   tagsView: true,
 
   /**
+<<<<<<< HEAD
    * 持久化标签页
    */
   tagsViewPersist: false,
@@ -43,6 +53,11 @@ module.exports = {
    * 是否固定头部
    */
   fixedHeader: true,
+=======
+   * 是否固定头部
+   */
+  fixedHeader: false,
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 
   /**
    * 是否显示logo
@@ -50,6 +65,7 @@ module.exports = {
   sidebarLogo: true,
 
   /**
+<<<<<<< HEAD
    * 是否显示动态标题
    */
   dynamicTitle: false,
@@ -63,4 +79,12 @@ module.exports = {
    * 底部版权文本内容
    */
   footerContent: 'Copyright © 2018-2026 RuoYi. All Rights Reserved.'
+=======
+   * @type {string | array} 'production' | ['production', 'development']
+   * @description Need show err logs component.
+   * The default is only used in the production env
+   * If you want to also use it in dev, you can pass ['production', 'development']
+   */
+  errorLog: 'production'
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 }

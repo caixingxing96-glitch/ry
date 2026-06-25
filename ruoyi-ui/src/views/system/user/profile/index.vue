@@ -8,7 +8,11 @@
           </div>
           <div>
             <div class="text-center">
+<<<<<<< HEAD
               <userAvatar />
+=======
+              <userAvatar :user="user" />
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
             </div>
             <ul class="list-group list-group-striped">
               <li class="list-group-item">
@@ -33,7 +37,11 @@
               </li>
               <li class="list-group-item">
                 <svg-icon icon-class="date" />创建日期
+<<<<<<< HEAD
                 <div class="pull-right">{{ user.createTime }}</div>
+=======
+                <div class="pull-right">2018-08-23 09:11:56</div>
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
               </li>
             </ul>
           </div>
@@ -44,12 +52,20 @@
           <div slot="header" class="clearfix">
             <span>基本资料</span>
           </div>
+<<<<<<< HEAD
           <el-tabs v-model="selectedTab">
+=======
+          <el-tabs v-model="activeTab">
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
             <el-tab-pane label="基本资料" name="userinfo">
               <userInfo :user="user" />
             </el-tab-pane>
             <el-tab-pane label="修改密码" name="resetPwd">
+<<<<<<< HEAD
               <resetPwd />
+=======
+              <resetPwd :user="user" />
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
             </el-tab-pane>
           </el-tabs>
         </el-card>
@@ -59,10 +75,17 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import userAvatar from "./userAvatar"
 import userInfo from "./userInfo"
 import resetPwd from "./resetPwd"
 import { getUserProfile } from "@/api/system/user"
+=======
+import userAvatar from "./userAvatar";
+import userInfo from "./userInfo";
+import resetPwd from "./resetPwd";
+import { getUserProfile } from "@/api/system/user";
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 
 export default {
   name: "Profile",
@@ -72,6 +95,7 @@ export default {
       user: {},
       roleGroup: {},
       postGroup: {},
+<<<<<<< HEAD
       selectedTab: "userinfo"
     }
   },
@@ -81,10 +105,18 @@ export default {
       this.selectedTab = activeTab
     }
     this.getUser()
+=======
+      activeTab: "userinfo"
+    };
+  },
+  created() {
+    this.getUser();
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   },
   methods: {
     getUser() {
       getUserProfile().then(response => {
+<<<<<<< HEAD
         this.user = response.data
         this.roleGroup = response.roleGroup
         this.postGroup = response.postGroup
@@ -93,3 +125,23 @@ export default {
   }
 }
 </script>
+=======
+        this.user = response.data;
+        this.roleGroup = response.roleGroup;
+        this.postGroup = response.postGroup;
+      });
+    }
+  }
+};
+</script>
+
+<style rel="stylesheet/scss" lang="scss">
+.avatar-uploader-icon {
+  font-size: 28px;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+}
+</style>
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)

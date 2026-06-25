@@ -41,6 +41,7 @@ export function delNotice(noticeId) {
     url: '/system/notice/' + noticeId,
     method: 'delete'
   })
+<<<<<<< HEAD
 }
 
 // 首页顶部公告列表（带已读状态）
@@ -77,3 +78,6 @@ export function listNoticeReadUsers(query) {
     params: query
   })
 }
+=======
+}
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)

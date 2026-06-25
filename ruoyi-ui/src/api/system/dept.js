@@ -9,6 +9,7 @@ export function listDept(query) {
   })
 }
 
+<<<<<<< HEAD
 // 查询部门列表（排除节点）
 export function listDeptExcludeChild(deptId) {
   return request({
@@ -17,6 +18,8 @@ export function listDeptExcludeChild(deptId) {
   })
 }
 
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 // 查询部门详细
 export function getDept(deptId) {
   return request({
@@ -25,6 +28,25 @@ export function getDept(deptId) {
   })
 }
 
+<<<<<<< HEAD
+=======
+// 查询部门下拉树结构
+export function treeselect() {
+  return request({
+    url: '/system/dept/treeselect',
+    method: 'get'
+  })
+}
+
+// 根据角色ID查询部门树结构
+export function roleDeptTreeselect(roleId) {
+  return request({
+    url: '/system/dept/roleDeptTreeselect/' + roleId,
+    method: 'get'
+  })
+}
+
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 // 新增部门
 export function addDept(data) {
   return request({
@@ -43,6 +65,7 @@ export function updateDept(data) {
   })
 }
 
+<<<<<<< HEAD
 // 保存部门排序
 export function updateDeptSort(data) {
   return request({
@@ -52,6 +75,8 @@ export function updateDeptSort(data) {
   })
 }
 
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 // 删除部门
 export function delDept(deptId) {
   return request({

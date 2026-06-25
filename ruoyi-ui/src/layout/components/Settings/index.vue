@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <el-drawer size="280px" :visible="showSettings" :with-header="false" :append-to-body="true" :before-close="closeSetting" :lock-scroll="false">
     <div class="drawer-container">
       <div>
@@ -110,6 +111,34 @@
       </div>
     </div>
   </el-drawer>
+=======
+  <div class="drawer-container">
+    <div>
+      <h3 class="drawer-title">系统布局配置</h3>
+
+      <div class="drawer-item">
+        <span>主题颜色</span>
+        <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange" />
+      </div>
+
+      <div class="drawer-item">
+        <span>开启 Tags-Views</span>
+        <el-switch v-model="tagsView" class="drawer-switch" />
+      </div>
+
+      <div class="drawer-item">
+        <span>固定 Header</span>
+        <el-switch v-model="fixedHeader" class="drawer-switch" />
+      </div>
+
+      <div class="drawer-item">
+        <span>显示 Logo</span>
+        <el-switch v-model="sidebarLogo" class="drawer-switch" />
+      </div>
+
+    </div>
+  </div>
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 </template>
 
 <script>
@@ -117,6 +146,7 @@ import ThemePicker from '@/components/ThemePicker'
 
 export default {
   components: { ThemePicker },
+<<<<<<< HEAD
   expose: ['openSetting'],
   data() {
     return {
@@ -125,6 +155,10 @@ export default {
       navType: this.$store.state.settings.navType,
       showSettings: false
     }
+=======
+  data() {
+    return {}
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   },
   computed: {
     fixedHeader: {
@@ -138,6 +172,7 @@ export default {
         })
       }
     },
+<<<<<<< HEAD
     tagsViewPersist: {
       get() {
         return this.$store.state.settings.tagsViewPersist
@@ -149,6 +184,8 @@ export default {
         })
       }
     },
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     tagsView: {
       get() {
         return this.$store.state.settings.tagsView
@@ -160,6 +197,7 @@ export default {
         })
       }
     },
+<<<<<<< HEAD
     tagsIcon: {
       get() {
         return this.$store.state.settings.tagsIcon
@@ -182,6 +220,8 @@ export default {
         })
       }
     },
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     sidebarLogo: {
       get() {
         return this.$store.state.settings.sidebarLogo
@@ -193,6 +233,7 @@ export default {
         })
       }
     },
+<<<<<<< HEAD
     dynamicTitle: {
       get() {
         return this.$store.state.settings.dynamicTitle
@@ -235,6 +276,8 @@ export default {
       immediate: true,
       deep: true
     }
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   },
   methods: {
     themeChange(val) {
@@ -242,6 +285,7 @@ export default {
         key: 'theme',
         value: val
       })
+<<<<<<< HEAD
       this.theme = val
     },
     handleTheme(val) {
@@ -292,12 +336,15 @@ export default {
       this.$cache.local.remove('tags-view-visited')
       this.$cache.local.remove("layout-setting")
       setTimeout("window.location.reload()", 1000)
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+<<<<<<< HEAD
 .setting-drawer-content {
   .setting-drawer-title {
     margin-bottom: 12px;
@@ -343,6 +390,10 @@ export default {
 
 .drawer-container {
   padding: 20px;
+=======
+.drawer-container {
+  padding: 24px;
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   font-size: 14px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -364,6 +415,7 @@ export default {
     float: right
   }
 }
+<<<<<<< HEAD
 
 // 导航模式
 .nav-wrap {
@@ -427,4 +479,6 @@ export default {
     }
   }
 }
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 </style>

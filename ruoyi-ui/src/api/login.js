@@ -10,6 +10,7 @@ export function login(username, password, code, uuid) {
   }
   return request({
     url: '/login',
+<<<<<<< HEAD
     headers: {
       isToken: false,
       repeatSubmit: false
@@ -28,6 +29,10 @@ export function register(data) {
     },
     method: 'post',
     data: data
+=======
+    method: 'post',
+    params: data
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   })
 }
 
@@ -39,6 +44,7 @@ export function getInfo() {
   })
 }
 
+<<<<<<< HEAD
 // 解锁屏幕
 export function unlockScreen(password) {
   return request({
@@ -48,6 +54,8 @@ export function unlockScreen(password) {
   })
 }
 
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 // 退出方法
 export function logout() {
   return request({
@@ -60,10 +68,14 @@ export function logout() {
 export function getCodeImg() {
   return request({
     url: '/captchaImage',
+<<<<<<< HEAD
     headers: {
       isToken: false
     },
     method: 'get',
     timeout: 20000
+=======
+    method: 'get'
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   })
 }

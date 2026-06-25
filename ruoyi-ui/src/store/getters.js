@@ -2,13 +2,17 @@ const getters = {
   sidebar: state => state.app.sidebar,
   size: state => state.app.size,
   device: state => state.app.device,
+<<<<<<< HEAD
   dict: state => state.dict.dict,
   isLock: state => state.lock.isLock,
   lockPath: state => state.lock.lockPath,
+=======
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
   visitedViews: state => state.tagsView.visitedViews,
   cachedViews: state => state.tagsView.cachedViews,
   token: state => state.user.token,
   avatar: state => state.user.avatar,
+<<<<<<< HEAD
   id: state => state.user.id,
   name: state => state.user.name,
   nickName: state => state.user.nickName,
@@ -19,5 +23,12 @@ const getters = {
   topbarRouters: state => state.permission.topbarRouters,
   defaultRoutes: state => state.permission.defaultRoutes,
   sidebarRouters: state => state.permission.sidebarRouters
+=======
+  name: state => state.user.name,
+  introduction: state => state.user.introduction,
+  roles: state => state.user.roles,
+  permissions: state => state.user.permissions,
+  permission_routes: state => state.permission.routes
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 }
 export default getters

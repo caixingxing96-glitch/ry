@@ -3,7 +3,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import * as echarts from 'echarts'
+=======
+import echarts from 'echarts'
+>>>>>>> 46444bd0 (RuoYi-Vue 1.0)
 require('echarts/theme/macarons') // echarts theme
 import resize from './mixins/resize'
 
